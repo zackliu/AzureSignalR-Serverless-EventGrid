@@ -1,0 +1,18 @@
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    },
+    {
+      "name": "groupTable",
+      "type": "table",
+      "tableName": "Groups",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "",
+      "direction": "in"
+    }
+  ]
+}
