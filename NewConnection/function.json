@@ -6,11 +6,11 @@
       "direction": "in"
     },
     {
-      "name": "groupTable",
+      "name": "connectionTable",
       "type": "table",
-      "tableName": "Groups",
-      "partitionKey": "Test",
-      "rowKey": "{queueTrigger}",
+      "tableName": "connections",
+      "partitionKey": "signalr",
+      "rowKey": "connectioncount",
       "connection": "",
       "direction": "in"
     }
