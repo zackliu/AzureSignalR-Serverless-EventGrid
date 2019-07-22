@@ -1,0 +1,16 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    },
+    {
+      "type": "signalR",
+      "name": "$return",
+      "hubName": "chat",
+      "direction": "out"
+    }
+  ]
+}
