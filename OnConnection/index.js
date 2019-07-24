@@ -50,8 +50,8 @@ module.exports = async function (context, eventGridEvent) {
     
     if (eventGridEvent.eventType == 'Microsoft.SignalRService.ClientConnectionConnected') {
         var message = new Map();
-        message.text = 'welcome'
-        message.sender = 'SYSTEM'
+        message.text = 'Welcome to Serverless Chat'
+        message.sender = '__SYSTEM__'
         context.bindings.sendToConnection = [{
             "connectionId": eventGridEvent.data.connectionId,
             "target": "newMessage",
@@ -59,10 +59,10 @@ module.exports = async function (context, eventGridEvent) {
         }];
     }
 
-    // context.bindings.broadcast = [{
-    //     "target": "connectionCount",
-    //     "arguments": [ newConnectionCount ]
-    // }];
+    context.bindings.broadcast = [{
+        "target": "connectionCount",
+        "arguments": [ newConnectionCount ]
+    }];
 };
 
 const getEntry = (partitionKey, rowKey) => new Promise((resolve, reject) => {

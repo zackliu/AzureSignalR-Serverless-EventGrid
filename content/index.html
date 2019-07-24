@@ -26,7 +26,7 @@
         <div style="display: inline-block;">
             <h3>Serverless chat</h3>
         </div>
-        <div style="display: block;text-align: right;" >
+        <div style="display: block;text-align: right;color: #0d64b2;font-weight: 700;" >
             online: {{ onlineCount }}
         </div>
     </div>    
@@ -60,7 +60,10 @@
             <div>
               <div style="display: inline-block; padding-left: 12px;">
                 <div>
-                    <a href="#" v-on:click.prevent="sendPrivateMessage(message.sender)">
+                    <a v-if="message.sender === '__SYSTEM__'">
+                      <span class="text-info small"><strong style="color: #0062cc;">SYSTEM</strong></span>
+                    </a>
+                    <a href="#" v-else v-on:click.prevent="sendPrivateMessage(message.sender)">
                       <span class="text-info small"><strong>{{ message.sender }}</strong></span>
                     </a>
                   <span v-if="message.isPrivate" class="badge badge-secondary">private message</small>
@@ -99,8 +102,7 @@
           ready: false,
           loginUrl: `${apiBaseUrl}/.auth/login/${authProvider}?post_login_redirect_url=${encodeURIComponent(window.location.href)}`,
           logoutUrl: `${apiBaseUrl}/.auth/logout?post_logout_redirect_uri=${encodeURIComponent(window.location.href)}`,
-          onlineCount: 0,
-          welcomeMessage: ''
+          onlineCount: 'Loading...'
         };
       },
       mounted: function() {
